@@ -1,0 +1,67 @@
+var xls_to_json = require("xls-to-json");
+var fs = require("fs");
+var exec = require('child_process').exec;
+
+var n = 30;
+
+var convert = function(index, URL){
+	var html_content = '<!DOCTYPE html><html><head><style type="text/css">#img1{padding:0 25px;position: absolute;max-height: 1500px;}#img2{position: absolute;max-height: 1420px;padding:0 25px;}</style></head><body><img id="img1" src=https://drive.google.com/uc?export=view&id="'+URL+'"><img id="img2" src="coord.png"></body></html>';
+	fs.writeFile("html_files/" + index + ".html", html_content, function(err){
+		if(err){
+			throw err;
+		}
+		console.log("HTMLfied: " + index);//data[index].name);
+		exec("wkhtmltopdf  --zoom 1.5 --orientation Portrait " + "html_files/" + index + ".html pdf_files/" + /*data[index].name.replace(/[^a-zA-Z0-9]/g, '')*/index + ".pdf", function(err, stderr, stdout){
+			if(err){
+				throw err;
+			}
+			console.log("PDFfied: " + index);//data[index].name);
+			//if(index+n < data.length) convert(index+n, data);
+		});
+	});
+};
+
+var webops = {"WebOps":[{"Name":"Shiv Kumar Tavker","Position":"Super-Coordinator","MobileNo":8980026571,"Email":"tavkershiv@gmail.com","Photo":"Shiv Kumar Tavker - Super Coordinator.jpg","PhotoID":"0B1ZFllIeExkoV2xVT2piWXhMVTA"},{"Name":"K. Vamsi Krishna","Position":"Super-Coordinator","MobileNo":9677217788,"Email":"vamsikarnika@gmail.com","Photo":"K. Vamsi Krishna - Super Coordinator.jpg","PhotoID":"0B1ZFllIeExkoV0VFZnhBeUJ3bVU"},{"Name":"Smruti Patro","Position":"Coordinator","MobileNo":9940320250,"Email":"pratimapatro11@gmail.com","Photo":"Smruti Patro - Coordinator.jpg","PhotoID":"0B1ZFllIeExkobVhyZnpOV09jMGM"},{"Name":"Vinayak","Position":"Coordinator","MobileNo":7092542048,"Email":"vinayakmsodar@gmail.com","Photo":"Vinayak Sodar - Coordinator.jpg","PhotoID":"0B1ZFllIeExkoTnB6akp3WkZOd1E"},{"Name":"T K Mahesh","Position":"Coordinator","MobileNo":9444217119,"Email":"hsehamtk2299@gmail.com","Photo":"","PhotoID":""},{"Name":"Rishabh Thakur","Position":"Coordinator","MobileNo":9500187323,"Email":"cs16b047@smail.iitm.ac.in","Photo":"Rishabh Thakur - Coordinator.jpg","PhotoID":"0B1ZFllIeExkobENWeDRmeWs2MlE"},{"Name":"Mohammed Muqeeth","Position":"Coordinator","MobileNo":9182437123,"Email":"ee16b026@smail.iitm.ac.in","Photo":"Mohammed Muqeeth - Coordinator.jpg","PhotoID":"0B1ZFllIeExkoLTFKOFNVQ1NNUWs"},{"Name":"Mudunuri Sriram","Position":"Coordinator","MobileNo":8106357947,"Email":"mudunurisriram@gmail.com","Photo":"Mudunuri Sriram - Coordinator.jpg","PhotoID":"0B1ZFllIeExkoSHpDTWdMbl9kX0U"},{"Name":"Sreejith​ ​S","Position":"Coordinator","MobileNo":9207598975,"Email":"srjsreejith1110@gmail.com","Photo":"Sreejith- -S - Coordinator.jpg","PhotoID":"0B1ZFllIeExkoMFR4ZExUdHQteFU"},{"Name":"V.C.Ashwin","Position":"Coordinator","MobileNo":"9940308109, 9182874011","Email":"ee16b041@smail.iitm.ac.in","Photo":"V.C.Ashwin - Coordinator.jpg","PhotoID":"0B1ZFllIeExkoS3lLUC1EaGZaNTg"}]};
+
+
+// $(window).ready(function(){
+// $.ajax({
+//     url: 'https://script.google.com/macros/s/AKfycbygukdW3tt8sCPcFDlkMnMuNu9bH5fpt7bKV50p2bM/exec?id=1WjO92CQ-BLEqGuqZXzSo-wqTx6YE5PZrRpFtSHhxv-c&sheet=WebOps',
+//     type: "GET",
+//     dataType: "jsonp",
+//     async: true,
+//     success: function (msg) {
+//         console.log(Object.keys(msg)[0], msg);
+//         //convert("test", "json");
+//         //that.showdata(Object.keys(msg)[0],msg);
+//         //counter++;
+//         //if(counter==that.alldept.length)
+//         //    console.log(that.allcontactdata);
+//     },
+//     complete: function (msg){
+//     	console.log(Object.keys(msg)[0], msg.responseJSON.WebOps);
+    	for(var i =0; i<webops.WebOps.length;i++)
+    	{	
+    		var name = webops.WebOps[i].Name.replace(/[^a-zA-Z0-9]/g, '');
+    		convert(name, webops.WebOps[i].PhotoID);
+    	}
+//     },
+//     error: function () {
+//         console.log("Error occurred");
+//     }
+// });
+
+// xls_to_json({
+// 	input: "excel_sheet/content.xls",
+// 	output: "content.json"
+// }, function(err, json){
+// 	if(err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log	(json);
+		// for(var i=0; i<n&&i<json.length; ++i){
+			//convert("test", "json");
+		// }
+	// }
+// });
+// });

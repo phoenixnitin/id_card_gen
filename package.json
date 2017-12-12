@@ -1,0 +1,12 @@
+{
+  "name": "certificate-generator",
+  "version": "0.0.0",
+  "description": "Certificate generator",
+  "main": "app.js",
+  "author": "abinthomasonline",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "jsdom": "^6.0.0",
+    "xls-to-json": "^0.4.0"
+  }
+}
