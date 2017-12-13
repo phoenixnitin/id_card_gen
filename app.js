@@ -6,13 +6,13 @@ var n = 30;
 
 var convert = function(index){
 	//var html_content = '<!DOCTYPE html><html><head><style type="text/css">@font-face {font-family: "cassannet_plusregular";src: url("cassannet_plus_regular-webfont.eot");src: url("cassannet_plus_regular-webfont.eot?#iefix") format("embedded-opentype"),url("cassannet_plus_regular-webfont.woff2") format("woff2"),url("cassannet_plus_regular-webfont.woff") format("woff"),url("cassannet_plus_regular-webfont.ttf") format("truetype"),url("cassannet_plus_regular-webfont.svg#cassannet_plusregular") format("svg");font-weight: normal;font-style: normal;}.text {position: absolute;font-size: 58px;text-align: center;font-family: "cassannet_plusregular";}#name {top: 1244px;left: 25px;width: 874px;}#position {top: 1373px;left: 225px;width: 880px;}#img1{position: absolute;max-height: 1584px;}</style></head><body><img id="img1" src="card.png"><div id="name" class="text">'+index+'</div><div id="position" class="text">'+dept+'</div></body></html>';
-	var html_content = '<!DOCTYPE html><html><head><style type="text/css">#img1{position: absolute;height: 1318px;top:22px;left:18px;}#img2{position: absolute;height:1340px;width:879px;}</style></head><body><img id="img1" src="'+index+'"><img id="img2" src="../template.png"></body></html>';
-	fs.writeFile("html_files/Spons/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html", html_content, function(err){
+	var html_content = '<!DOCTYPE html><html><head><style type="text/css">#img1{position: absolute;height: 1318px;top:22px;left:32px;width:1977px;}#img2{position: absolute;height:1340px;width:2026px;}</style></head><body><img id="img1" src="'+index+'"><img id="img2" src="../template.png"></body></html>';
+	fs.writeFile("html_files/JPEG/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html", html_content, function(err){
 		if(err){
 			throw err;
 		}
 		console.log("HTMLfied: " + index.replace(/[^a-zA-Z0-9]/g, ''));//data[index].name);
-		exec("wkhtmltoimage -f jpg --height 1354 --width 895 " + "html_files/Spons/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html image_files/spons/" + /*data[index].name.replace(/[^a-zA-Z0-9]/g, '')*/index.replace(/[^a-zA-Z0-9]/g, ''), function(err, stderr, stdout){
+		exec("wkhtmltoimage -f jpg --height 1354 --width 2040 " + "html_files/JPEG/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html image_files/pti/" + /*data[index].name.replace(/[^a-zA-Z0-9]/g, '')*/index.replace(/[^a-zA-Z0-9]/g, ''), function(err, stderr, stdout){
 			if(err){
 				throw err;
 			}
@@ -46,7 +46,12 @@ var convert = function(index){
 // var array = ['Anurag.jpg', 'ARNAB_HospiCoord.jpg', 'Ashlesha hospi coord.jpg', 'B.MAHESH_coordinator.jpg', 'Deepti hospi coord.jpg', 'Gaurav_hospi_coord.jpg', 'IMG_5530.jpg', 'IMG_5548.jpg', 'IMG_5585.jpg', 'IMG_5606.jpg', 'IMG_5609.jpg', 'IMG_5625.jpg', 'IMG_5633.jpg', 'IMG_5909.jpg', 'IMG_5935.jpg', 'IMG_5936.jpg', 'K T S Sai Teja_Coordinator.jpg', 'Lahari_coordinator.jpg', 'Madhu_hospi_coord.jpg', 'Manasa_cord.jpg', 'meghna hospi coord.jpg', 'milind hospi coord.jpg', 'Mudit_coordinator.jpg', 'NandhaGopal_SuperCoord.jpg', 'nikitha hospi coord.jpg', 'Roshan_HospiCoord.jpg', 'SAITEJA_hospicoord.jpg', 'shridharan_Coord.jpg', 'shubham hospi coord.jpg', 'Siddhant_hospi coord.jpg'];
 // var array = ['Ameen_coord.jpg', 'Armaan_coord-1.jpg', 'Divija_coord.jpg', 'Fayaz_supercoord.jpg', 'Gayathri_coord-2.jpg', 'Hrishikesh_coord-2.jpg', 'Ilamthendral_coord.jpg', 'Jithin_coord.jpg', 'Kaustubh_coord-1.jpg', 'Maneesh_coord.jpg', 'Meenakshi_coord-1.jpg', 'Nikhil_coord-2.jpg', 'Omkar_coord (1).jpg', 'pavan.jpg', 'Pradeep_coord.jpg', 'Saurabh_coord.jpg', 'shamil _coord.jpg', 'Shrinath_coord-2.jpg', 'Shubham_coord-1.jpg', 'Sumanth_coord.jpg', 'Tanishi_coord.jpg', 'Utkarsh_coord-1.jpg', 'Yash_coord-2.jpg'];
 // var array = ['IMG_5858.jpg', 'IMG_5861.jpg', 'IMG_5862.jpg', 'IMG_5863.jpg', 'IMG_5866.jpg', 'IMG_5869.jpg', 'IMG_5876.jpg', 'IMG_5879.jpg', 'IMG_5882.jpg', 'IMG_5885.jpg', 'IMG_5899.jpg', 'IMG_5901.jpg', 'IMG_5967.jpg', 'IMG_5968.jpg'];
-var array = ['Aayush Anand  -  Creative.jpg', 'Anuj Sindgi -  Creative.jpg', 'Arnesh Mishra - Coordinator.jpg', 'Arunima Kumar -  Creative.jpg', 'Atharva Rajadnya -  Creative.jpg', 'Avantika Singh -  Creative.jpg', 'Avino Niphi -  Creative.jpg', 'Devansh Jain -  Strategist.jpg', 'Eric Mawlong -  Creative.jpg', 'GD -  Creative.jpg', 'Homik -  Creative.jpg', 'Navneeth Krishna -  Creative(2).jpg', 'Nirmal Raj - Coordinator.jpg', 'Sanjana Paraz- Coordinator.jpg', 'Saswat Mishra - Coordinator.jpg', 'Vignesh S -  Creative.jpg', 'Vivek Oommen -  Creative(2).jpg'];
+// var array = ['Aayush Anand  -  Creative.jpg', 'Anuj Sindgi -  Creative.jpg', 'Arnesh Mishra - Coordinator.jpg', 'Arunima Kumar -  Creative.jpg', 'Atharva Rajadnya -  Creative.jpg', 'Avantika Singh -  Creative.jpg', 'Avino Niphi -  Creative.jpg', 'Devansh Jain -  Strategist.jpg', 'Eric Mawlong -  Creative.jpg', 'GD -  Creative.jpg', 'Homik -  Creative.jpg', 'Navneeth Krishna -  Creative(2).jpg', 'Nirmal Raj - Coordinator.jpg', 'Sanjana Paraz- Coordinator.jpg', 'Saswat Mishra - Coordinator.jpg', 'Vignesh S -  Creative.jpg', 'Vivek Oommen -  Creative(2).jpg'];
+
+// PTIs
+// var array = ['DSC_5905.jpg', 'DSC_5906.jpg', 'DSC_5910.jpg', 'DSC_5911.jpg', 'DSC_5912.jpg', 'DSC_5913.jpg', 'DSC_5914.jpg', 'DSC_5915.jpg', 'DSC_5916.jpg', 'DSC_5917.jpg', 'DSC_5918.jpg', 'DSC_5919.jpg', 'DSC_5921.jpg', 'DSC_5922.jpg', 'DSC_5923.jpg', 'DSC_5924.jpg', 'DSC_5926.jpg', 'DSC_5927.jpg', 'DSC_5928.jpg', 'DSC_5930.jpg', 'DSC_5931.jpg', 'DSC_5932.jpg', 'DSC_5933.jpg', 'DSC_5935.jpg', 'DSC_5937.jpg', 'DSC_5938.jpg', 'DSC_5939.jpg', 'DSC_5940.jpg', 'DSC_5941.jpg', 'DSC_5942.jpg', 'DSC_5943.jpg', 'DSC_5944.jpg', 'DSC_5945.jpg'];
+
+// 
 		for(var i =0; i<array.length;i++)
     	{	
     		convert(array[i]);
