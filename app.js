@@ -4,15 +4,15 @@ var exec = require('child_process').exec;
 
 var n = 30;
 
-var convert = function(index){
+var convert = function(index, name, designation){
 	//var html_content = '<!DOCTYPE html><html><head><style type="text/css">@font-face {font-family: "cassannet_plusregular";src: url("cassannet_plus_regular-webfont.eot");src: url("cassannet_plus_regular-webfont.eot?#iefix") format("embedded-opentype"),url("cassannet_plus_regular-webfont.woff2") format("woff2"),url("cassannet_plus_regular-webfont.woff") format("woff"),url("cassannet_plus_regular-webfont.ttf") format("truetype"),url("cassannet_plus_regular-webfont.svg#cassannet_plusregular") format("svg");font-weight: normal;font-style: normal;}.text {position: absolute;font-size: 58px;text-align: center;font-family: "cassannet_plusregular";}#name {top: 1244px;left: 25px;width: 874px;}#position {top: 1373px;left: 225px;width: 880px;}#img1{position: absolute;max-height: 1584px;}</style></head><body><img id="img1" src="card.png"><div id="name" class="text">'+index+'</div><div id="position" class="text">'+dept+'</div></body></html>';
-	var html_content = '<!DOCTYPE html><html><head><style type="text/css">#img1{position: absolute;height: 1318px;top:22px;left:32px;width:1977px;}#img2{position: absolute;height:1340px;width:2026px;}</style></head><body><img id="img1" src="'+index+'"><img id="img2" src="../template.png"></body></html>';
-	fs.writeFile("html_files/JPEG/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html", html_content, function(err){
+	var html_content = '<!DOCTYPE html><html><head><link rel="stylesheet" href="../stylesheet.css"><style type="text/css">#img1{position: absolute;height: 1318px;width:1977px;}#img2{position: absolute;height:1431px;width:1977px;top: -114px;}body{margin: 0px;}#designation{font-family: Futura, "Trebuchet MS", Arial, sans-serif;position: absolute;z-index: 1;top: 1152px;color: white;font-size: 45px;letter-spacing: 24px;width: 1718px;text-align: center;left: 260px;text-transform: uppercase;}#name{font-family: cassannet_plusregular;position: absolute;z-index: 1;top: 1011px;color: white;font-size: 70px;letter-spacing: 15px;font-weight: 900;width: 1718px;text-align: center;}</style></head><body><div id="name">'+name+'</div><div id="designation">'+designation+'</div><img id="img1" src="'+index+'"><img id="img2" src="../core_template.png"></body></html>';
+	fs.writeFile("html_files/Core/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html", html_content, function(err){
 		if(err){
 			throw err;
 		}
 		console.log("HTMLfied: " + index.replace(/[^a-zA-Z0-9]/g, ''));//data[index].name);
-		exec("wkhtmltoimage -f jpg --height 1354 --width 2040 " + "html_files/JPEG/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html image_files/pti/" + /*data[index].name.replace(/[^a-zA-Z0-9]/g, '')*/index.replace(/[^a-zA-Z0-9]/g, ''), function(err, stderr, stdout){
+		exec("wkhtmltoimage -f jpg --height 1318 --width 1978 " + "html_files/Core/" + index.replace(/[^a-zA-Z0-9]/g, '') + ".html image_files/core/" + /*data[index].name.replace(/[^a-zA-Z0-9]/g, '')*/index.replace(/[^a-zA-Z0-9]/g, ''), function(err, stderr, stdout){
 			if(err){
 				throw err;
 			}
@@ -51,10 +51,13 @@ var convert = function(index){
 // PTIs
 // var array = ['DSC_5905.jpg', 'DSC_5906.jpg', 'DSC_5910.jpg', 'DSC_5911.jpg', 'DSC_5912.jpg', 'DSC_5913.jpg', 'DSC_5914.jpg', 'DSC_5915.jpg', 'DSC_5916.jpg', 'DSC_5917.jpg', 'DSC_5918.jpg', 'DSC_5919.jpg', 'DSC_5921.jpg', 'DSC_5922.jpg', 'DSC_5923.jpg', 'DSC_5924.jpg', 'DSC_5926.jpg', 'DSC_5927.jpg', 'DSC_5928.jpg', 'DSC_5930.jpg', 'DSC_5931.jpg', 'DSC_5932.jpg', 'DSC_5933.jpg', 'DSC_5935.jpg', 'DSC_5937.jpg', 'DSC_5938.jpg', 'DSC_5939.jpg', 'DSC_5940.jpg', 'DSC_5941.jpg', 'DSC_5942.jpg', 'DSC_5943.jpg', 'DSC_5944.jpg', 'DSC_5945.jpg'];
 
-// 
+// Cores
+var array = ['DSC_5962.jpg', 'DSC_5963.jpg', 'DSC_5970.jpg', 'DSC_5972.jpg', 'DSC_5977.jpg', 'DSC_5983.jpg', 'DSC_5988.jpg', 'DSC_5996.jpg', 'DSC_6012.jpg', 'DSC_6047.jpg', 'DSC_6049.jpg', 'DSC_6214.jpg', 'DSC_6221.jpg','Shuhel.jpg', 'Jawahar.jpg'];
+var name_send = ['Dhyaneshwaran C', 'Shreyas Chaudhari', 'Kishore Yadav R', 'Nitin Kumar', 'Shaswat Mohanty', 'Joel Jose Varghese', 'Narain M', 'Kiran Roy','Yatish Chandra', 'Farzin K', 'L R Kamala Devi', 'Aditya Bhattacharyya', 'Shyam Mohan', 'Shuhel Abdul Kareem', 'R Jawahar'];
+var designation_send = ['Institute Sports Secretary', 'Core - Sponsorship and PR','Core - Facilities and requirements','Core - WebOps','Organizing Head','Core - Sponsorship and PR','Core - Media','Core - Facilities and requirements','Core - Media','Core - Finance','Core - Hospitality','Core - Events','Core - Events','Organizing Head','Core - Hospitality'];
 		for(var i =0; i<array.length;i++)
     	{	
-    		convert(array[i]);
+    		convert(array[i],name_send[i],designation_send[i]);
     	}
   
 
